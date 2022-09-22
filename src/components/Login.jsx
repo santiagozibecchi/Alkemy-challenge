@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 const Login = () => {
    const [formValues, setFormValues] = useState({
@@ -6,20 +7,36 @@ const Login = () => {
       password: "",
    });
 
-   const handleSubmit = (e) => {
+   const handleSubmit = async (e) => {
       e.preventDefault();
+
+      const { email, password } = formValues;
 
       const regexEmail =
          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-      if (formValues.email === "" || formValues.password) {
+      if (email === "" || password === "") {
          return console.log("Los campos no pueden estar vacios");
       }
 
-      if (!regexEmail.test(formValues.email)) {
+      if (!regexEmail.test(email)) {
          return console.log("Email no valido");
       }
 
+      if (email !== "challange@alkemy.org" || password !== "react") {
+         return console.log("Credenciales invalidas");
+      }
+
+      // Envio de la data una vez que pasa todas las validaciones\
+      try {
+         const { data } = await axios.post(
+            "http://challange-react.alkemy.org",
+            { email, password }
+         );
+         console.log(data);
+      } catch (error) {
+         console.log(error);
+      }
    };
 
    const handleOnChange = (e) => {
