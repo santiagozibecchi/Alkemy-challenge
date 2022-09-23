@@ -20,15 +20,30 @@ const Login = () => {
          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
       if (email === "" || password === "") {
-         return swal(<h2>Los campos no pueden estar vacios!</h2>);
+         return swal({
+            title: "Los campos no pueden estar vacios!",
+            text: "Por favor ingrese los datos nuevamente",
+            icon: "error",
+            button: "Cerrar Modal",
+         });
       }
 
       if (!regexEmail.test(email)) {
-         return swal(<h2>Email no valido</h2>);
+         return swal({
+            title: "Email no válido!",
+            text: "Por favor ingrese los datos nuevamente",
+            icon: "error",
+            button: "Cerrar Modal",
+         });
       }
 
       if (email !== "challenge@alkemy.org" || password !== "react") {
-         return swal(<h2>Credenciales invalidas</h2>);
+         return swal({
+            title: "Credenciales inválidas!",
+            text: "Por favor ingrese los datos nuevamente",
+            icon: "error",
+            button: "Cerrar Modal",
+         });
       }
 
       // Envio de la data una vez que pasa todas las validaciones\
@@ -46,7 +61,12 @@ const Login = () => {
          navigate("/listado");
 
          // * La data devuelve el token
-         return swal("Estas logeado");
+         return swal({
+            title: "Estas logeado!",
+            text: "Estas en la Página de Listado!",
+            icon: "success",
+            button: "Cerrar Modal",
+         });
       } catch (error) {
          console.log(error);
       }
