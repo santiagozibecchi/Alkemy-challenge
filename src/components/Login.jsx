@@ -1,12 +1,15 @@
 import { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import swal from "@sweetalert/with-react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
    const [formValues, setFormValues] = useState({
       email: "",
       password: "",
    });
+
+   const navigate = useNavigate();
 
    const handleSubmit = async (e) => {
       e.preventDefault();
@@ -30,14 +33,17 @@ const Login = () => {
 
       // Envio de la data una vez que pasa todas las validaciones\
       try {
-         const { token } = await axios.post(
-            "http://challenge-react.alkemy.org",
-            formValues
-         );
+         // const { token } = await axios.post(
+         //    "http://challenge-react.alkemy.org",
+         //    formValues
+         // );
 
          // * Esto deberia guardar el token que estoy recibiendo de la peticion correspondiente
-         localStorage.setItem("token-A", token);
-         localStorage.setItem("State", JSON.stringify(formValues));
+         // localStorage.setItem("token-A", token);
+         localStorage.setItem("token-A", "66645as54SSSFG5sASDasfad");
+
+         // Redireccionar cuando se logea, si viene el token
+         navigate("/listado");
 
          // * La data devuelve el token
          return swal("Estas logeado");
