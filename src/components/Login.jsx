@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import swal from "@sweetalert/with-react";
 
 const Login = () => {
    const [formValues, setFormValues] = useState({
@@ -16,24 +17,30 @@ const Login = () => {
          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
       if (email === "" || password === "") {
-         return console.log("Los campos no pueden estar vacios");
+         return swal(<h2>Los campos no pueden estar vacios!</h2>);
       }
 
       if (!regexEmail.test(email)) {
-         return console.log("Email no valido");
+         return swal(<h2>Email no valido</h2>);
       }
 
-      if (email !== "challange@alkemy.org" || password !== "react") {
-         return console.log("Credenciales invalidas");
+      if (email !== "challenge@alkemy.org" || password !== "react") {
+         return swal(<h2>Credenciales invalidas</h2>);
       }
 
       // Envio de la data una vez que pasa todas las validaciones\
       try {
-         const { data } = await axios.post(
-            "http://challange-react.alkemy.org",
-            { email, password }
+         const { token } = await axios.post(
+            "http://challenge-react.alkemy.org",
+            formValues
          );
-         console.log(data);
+
+         // * Esto deberia guardar el token que estoy recibiendo de la peticion correspondiente
+         localStorage.setItem("token-A", token);
+         localStorage.setItem("State", JSON.stringify(formValues));
+
+         // * La data devuelve el token
+         return swal("Estas logeado");
       } catch (error) {
          console.log(error);
       }
