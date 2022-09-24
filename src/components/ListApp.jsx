@@ -7,8 +7,9 @@ const ListApp = () => {
 
    // Para hacer una redireccion es necesario utilizar useEffect
    // Ejecuta código cada vez que nuestro componente se renderiza.
+   const token = localStorage.getItem("token-A");
+   
    useEffect(() => {
-      const token = localStorage.getItem("token-A");
       console.log(token);
       if (token === null) {
          navigate("/");

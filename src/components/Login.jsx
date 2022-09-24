@@ -105,7 +105,9 @@ const Login = () => {
                />
             </div>
 
-            <button type="submit">Ingresar</button>
+            <button className="mt-3 btn btn-secondary" type="submit">
+               Ingresar
+            </button>
          </form>
       </div>
    );
