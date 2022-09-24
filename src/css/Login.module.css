@@ -1,6 +1,6 @@
 .loginContainer {
    background-color: rgb(178, 159, 222);
-   width: 250px;
+   width: 350px;
    padding: 20px;
    border: 1px solid rgb(31, 31, 37);
    border-radius: 10px;
@@ -33,11 +33,7 @@ input {
 
 button {
    width: 100px;
-   flex-direction: flex-end;
-   margin: 0 auto;
-   margin-top: 10px;
    height: 30px;
-   border-radius: 5px;
    border: none;
 }
 
