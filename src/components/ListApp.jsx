@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import "../css/bootstrap.min.css";
 
 const ListApp = () => {
    const navigate = useNavigate();
@@ -14,7 +15,26 @@ const ListApp = () => {
       }
    }, []);
 
-   return <h2>Listado</h2>;
+   return (
+      <div className="row mt-3">
+         {/* Estructura base */}
+         <div className="col-3">
+            <div className="card">
+               <img src="..." className="card-img-top" alt="..." />
+               <div className="card-body">
+                  <h5 className="card-title">Movie title</h5>
+                  <p className="card-text text-dark">
+                     Movie Review. Some quick example text to build on the card
+                     title and make.
+                  </p>
+                  <Link href="/" className="btn btn-primary">
+                     View Details
+                  </Link>
+               </div>
+            </div>
+         </div>
+      </div>
+   );
 };
 
 export default ListApp;
