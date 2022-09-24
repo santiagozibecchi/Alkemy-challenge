@@ -2,6 +2,7 @@ import { useState } from "react";
 // import axios from "axios";
 import swal from "@sweetalert/with-react";
 import { useNavigate } from "react-router-dom";
+import styles from "../css/Login.module.css";
 
 const Login = () => {
    const [formValues, setFormValues] = useState({
@@ -77,12 +78,13 @@ const Login = () => {
    };
 
    return (
-      <>
-         <h2>Formulario de Login</h2>
-         <form onSubmit={handleSubmit}>
-            <div>
+      <div className={styles.loginContainer}>
+         <h2 className={styles.title}>Formulario de Login</h2>
+         <form onSubmit={handleSubmit} className={styles.form}>
+            <div className={styles.inputContainer}>
                <label htmlFor="email">Email</label>
                <input
+                  placeholder="Ingrese su correo electronico"
                   id="email"
                   type="text"
                   name="email"
@@ -91,9 +93,10 @@ const Login = () => {
                />
             </div>
 
-            <div>
+            <div className={styles.inputContainer}>
                <label htmlFor="password">Contraseña</label>
                <input
+                  placeholder="Ingrese su contraseña"
                   id="password"
                   type="password"
                   name="password"
@@ -104,7 +107,7 @@ const Login = () => {
 
             <button type="submit">Ingresar</button>
          </form>
-      </>
+      </div>
    );
 };
 
