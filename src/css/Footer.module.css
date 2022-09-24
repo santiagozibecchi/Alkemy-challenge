@@ -1,0 +1,27 @@
+.footer {
+   position: absolute;
+   height: 100px;
+   width: 100vw;
+   bottom: 0;
+   left: 0;
+   background-color: rgb(31, 31, 37);
+}
+
+ul {
+   display: flex;
+   justify-content: center;
+   gap: 30px;
+}
+
+li {
+   list-style-type: none;
+}
+li a:visited {
+   color: white;
+}
+li a:focus {
+   color: rgb(167, 190, 194);
+}
+li a:hover {
+   color: rgb(115, 131, 134);
+}

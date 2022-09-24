@@ -1,13 +1,24 @@
 import React from "react";
+import styles from "../css/Footer.module.css";
 
 const Footer = () => {
    return (
-      <footer>
+      <footer className={styles.footer}>
          <nav>
             <ul>
                <li>
                   <a rel="noopener noreferer" href="https://twitter.com">
-                     TW
+                     Twitter
+                  </a>
+               </li>
+               <li>
+                  <a rel="noopener noreferer" href="https://twitter.com">
+                     Instagram
+                  </a>
+               </li>
+               <li>
+                  <a rel="noopener noreferer" href="https://twitter.com">
+                     Facebook
                   </a>
                </li>
             </ul>
