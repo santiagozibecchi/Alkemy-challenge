@@ -1,6 +1,6 @@
 .footer {
-   position: absolute;
-   height: 100px;
+   /* position: absolute; */
+   height: calc(100vh - 500px);
    width: 100vw;
    bottom: 0;
    left: 0;
@@ -8,7 +8,6 @@
 }
 
 ul {
-   margin-top: 15px;
    display: flex;
    justify-content: center;
    gap: 30px;

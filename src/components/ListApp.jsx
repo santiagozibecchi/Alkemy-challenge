@@ -16,8 +16,6 @@ const ListApp = () => {
       fetchApi().then(setMoviesList);
    }, [setMoviesList]);
 
-   console.log(moviesList);
-
    // Queremos evitar el renderizado del componte y redirigir al usuario
    // ya que al utilizar la redireccion del navigate el usuario entra en la pagina
    // y despues se lo quita, queremos evitar esto
@@ -27,23 +25,27 @@ const ListApp = () => {
       <>
          {!token && <Navigate to="/" />}
 
-         {/* Estructura base */}
          <div className="row mt-3">
-            <div className="col-3">
-               <div className="card">
-                  <img src="..." className="card-img-top" alt="..." />
-                  <div className="card-body">
-                     <h5 className="card-title">Movie title</h5>
-                     <p className="card-text text-dark">
-                        Movie Review. Some quick example text to build on the
-                        card title and make.
-                     </p>
-                     <Link href="/" className="btn btn-primary">
-                        View Details
-                     </Link>
+            {moviesList.map((movie) => (
+               <div className="col-3" key={movie.id}>
+                  <div className="card my-4">
+                     <img
+                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                        className="card-img-top"
+                        alt="..."
+                     />
+                     <div className="card-body">
+                        <h5 className="card-title">{movie.title}</h5>
+                        <p className="card-text text-dark">
+                           {movie.overview.slice(0, 50)}...
+                        </p>
+                        <Link href="/" className="btn btn-primary">
+                           View Details
+                        </Link>
+                     </div>
                   </div>
                </div>
-            </div>
+            ))}
          </div>
       </>
    );

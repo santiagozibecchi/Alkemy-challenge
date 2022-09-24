@@ -7,7 +7,6 @@ export const fetchApi = async () => {
    const {
       data: { results },
    } = await axios.get(endpoint);
-   console.log(results);
 
    return results;
 };
