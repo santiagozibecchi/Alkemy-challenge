@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { fetchApi } from "../helpers/fetchApi";
+import swal from "@sweetalert/with-react";
 import "../css/bootstrap.min.css";
 
 const ListApp = () => {
@@ -13,7 +14,17 @@ const ListApp = () => {
 
    useEffect(() => {
       // La funcion retorna directamente el array de objetos. El then resuelve la promesa y asigna el valor al estado
-      fetchApi().then(setMoviesList);
+      fetchApi()
+         .then(setMoviesList)
+         .catch((error) => {
+            swal({
+               title: "Hubo un error al cargar las películas",
+               text: "Por favor intente más tarde",
+               icon: "error",
+               button: "Cerrar Modal",
+            });
+            console.log(error);
+         });
    }, [setMoviesList]);
 
    // Queremos evitar el renderizado del componte y redirigir al usuario
@@ -28,7 +39,7 @@ const ListApp = () => {
          <div className="row mt-3">
             {moviesList.map((movie) => (
                <div className="col-3" key={movie.id}>
-                  <div className="card my-4">
+                  <div className="card loginmy-4">
                      <img
                         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                         className="card-img-top"
