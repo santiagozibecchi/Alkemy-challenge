@@ -1,10 +1,22 @@
+// import axios from "axios";
+import { useState, useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
+import { fetchApi } from "../helpers/fetchApi";
 import "../css/bootstrap.min.css";
 
 const ListApp = () => {
+   const [moviesList, setMoviesList] = useState([]);
+
    // Para hacer una redireccion es necesario utilizar useEffect
    // Ejecuta código cada vez que nuestro componente se renderiza.
    let token = localStorage.getItem("token-A");
+
+   useEffect(() => {
+      // La funcion retorna directamente el array de objetos. El then resuelve la promesa y asigna el valor al estado
+      fetchApi().then(setMoviesList);
+   }, [setMoviesList]);
+
+   console.log(moviesList);
 
    // Queremos evitar el renderizado del componte y redirigir al usuario
    // ya que al utilizar la redireccion del navigate el usuario entra en la pagina
