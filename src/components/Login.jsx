@@ -1,7 +1,7 @@
 import { useState } from "react";
 // import axios from "axios";
 import swal from "@sweetalert/with-react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import styles from "../css/Login.module.css";
 
 const Login = () => {
@@ -77,39 +77,45 @@ const Login = () => {
       setFormValues({ ...formValues, [e.target.name]: e.target.value });
    };
 
+   let token = localStorage.getItem("token-A");
+
    return (
-      <div className={styles.loginContainer}>
-         <h2 className={styles.title}>Formulario de Login</h2>
-         <form onSubmit={handleSubmit} className={styles.form}>
-            <div className={styles.inputContainer}>
-               <label htmlFor="email">Email</label>
-               <input
-                  placeholder="Ingrese su correo electronico"
-                  id="email"
-                  type="text"
-                  name="email"
-                  value={formValues.email}
-                  onChange={handleOnChange}
-               />
-            </div>
+      <>
+         {token && <Navigate to="/listado" />}
+         
+         <div className={styles.loginContainer}>
+            <h2 className={styles.title}>Formulario de Login</h2>
+            <form onSubmit={handleSubmit} className={styles.form}>
+               <div className={styles.inputContainer}>
+                  <label htmlFor="email">Email</label>
+                  <input
+                     placeholder="Ingrese su correo electronico"
+                     id="email"
+                     type="text"
+                     name="email"
+                     value={formValues.email}
+                     onChange={handleOnChange}
+                  />
+               </div>
 
-            <div className={styles.inputContainer}>
-               <label htmlFor="password">Contraseña</label>
-               <input
-                  placeholder="Ingrese su contraseña"
-                  id="password"
-                  type="password"
-                  name="password"
-                  value={formValues.password}
-                  onChange={handleOnChange}
-               />
-            </div>
+               <div className={styles.inputContainer}>
+                  <label htmlFor="password">Contraseña</label>
+                  <input
+                     placeholder="Ingrese su contraseña"
+                     id="password"
+                     type="password"
+                     name="password"
+                     value={formValues.password}
+                     onChange={handleOnChange}
+                  />
+               </div>
 
-            <button className="mt-3 btn btn-secondary" type="submit">
-               Ingresar
-            </button>
-         </form>
-      </div>
+               <button className="mt-3 btn btn-secondary" type="submit">
+                  Ingresar
+               </button>
+            </form>
+         </div>
+      </>
    );
 };
 
