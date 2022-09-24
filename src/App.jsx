@@ -6,16 +6,18 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 // Styles
-import "./css/bootstrap.min.css";
+import "./css/App.css";
 
 const App = () => {
    return (
-      <div className="container">
+      <div>
          <Header />
-         <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/listado" element={<ListApp />} />
-         </Routes>
+         <div className="container">
+            <Routes>
+               <Route path="/" element={<Login />} />
+               <Route path="/listado" element={<ListApp />} />
+            </Routes>
+         </div>
          <Footer />
       </div>
    );
