@@ -1,6 +1,11 @@
+html {
+   position: relative;
+}
+
 body {
    margin: 0;
    padding: 0;
+   padding-bottom: 100px;
 }
 
 .container {

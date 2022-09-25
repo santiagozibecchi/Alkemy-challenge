@@ -1,14 +1,18 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
 import Login from "./components/Login";
 import ListApp from "./components/ListApp";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Detalle from "./components/Detalle";
 
 // Styles
 import styles from "./css/App.module.css";
 
 const App = () => {
+
+   useParams()
+
    return (
       <div>
          <Header />
@@ -16,6 +20,7 @@ const App = () => {
             <Routes>
                <Route path="/" element={<Login />} />
                <Route path="/listado" element={<ListApp />} />
+               <Route path={`/detalle`} element={<Detalle />} />
             </Routes>
          </div>
          <Footer />

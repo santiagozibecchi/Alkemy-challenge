@@ -50,7 +50,10 @@ const ListApp = () => {
                         <p className="card-text text-dark">
                            {movie.overview.slice(0, 50)}...
                         </p>
-                        <Link href="/" className="btn btn-primary">
+                        <Link
+                           to={`/detalle?movieID=${movie.id}`}
+                           className="btn btn-primary"
+                        >
                            View Details
                         </Link>
                      </div>
