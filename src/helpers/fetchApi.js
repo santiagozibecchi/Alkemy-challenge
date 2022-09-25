@@ -10,3 +10,8 @@ export const fetchApi = async () => {
 
    return results;
 };
+
+// * Para centralizar el llamado a la API y no estar creando nuevas instancias dentro de cada componente podria utilizar axios.create({})
+
+// * o bien crear una BASE de la url, es decir que sea idem para todas, y a partir de alli ir pasando el resto de urls que necesite. Muy similar a la anterior
+// BASE_URL = "https://api.themoviedb.org/3"

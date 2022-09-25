@@ -27,6 +27,7 @@ const ListApp = () => {
          });
    }, [setMoviesList]);
 
+
    // Queremos evitar el renderizado del componte y redirigir al usuario
    // ya que al utilizar la redireccion del navigate el usuario entra en la pagina
    // y despues se lo quita, queremos evitar esto
