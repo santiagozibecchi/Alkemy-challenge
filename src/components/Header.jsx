@@ -13,7 +13,7 @@ const Header = () => {
                   </Link>
                </li>
                <li>
-                  <Link style={{ textDecoration: "none" }} to="/home">
+                  <Link style={{ textDecoration: "none" }} to="/">
                      Home
                   </Link>
                </li>

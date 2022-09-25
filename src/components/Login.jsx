@@ -56,7 +56,7 @@ const Login = () => {
 
          // * Esto deberia guardar el token que estoy recibiendo de la peticion correspondiente
          // localStorage.setItem("token-A", token);
-         localStorage.setItem("token-A", "66645as54SSSFG5sASDasfad");
+         sessionStorage.setItem("token-A", "66645as54SSSFG5sASDasfad");
 
          // Redireccionar cuando se logea, si viene el token
          navigate("/listado");
@@ -77,12 +77,12 @@ const Login = () => {
       setFormValues({ ...formValues, [e.target.name]: e.target.value });
    };
 
-   let token = localStorage.getItem("token-A");
+   let token = sessionStorage.getItem("token-A");
 
    return (
       <>
          {token && <Navigate to="/listado" />}
-         
+
          <div className={styles.loginContainer}>
             <h2 className={styles.title}>Formulario de Login</h2>
             <form onSubmit={handleSubmit} className={styles.form}>

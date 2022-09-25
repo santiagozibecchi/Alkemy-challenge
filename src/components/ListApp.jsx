@@ -10,7 +10,7 @@ const ListApp = () => {
 
    // Para hacer una redireccion es necesario utilizar useEffect
    // Ejecuta código cada vez que nuestro componente se renderiza.
-   let token = localStorage.getItem("token-A");
+   let token = sessionStorage.getItem("token-A");
 
    useEffect(() => {
       // La funcion retorna directamente el array de objetos. El then resuelve la promesa y asigna el valor al estado
