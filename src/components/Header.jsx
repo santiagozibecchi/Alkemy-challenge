@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Buscador from "./Buscador";
 import styles from "../css/Header.module.css";
 
 const Header = () => {
@@ -24,7 +25,9 @@ const Header = () => {
                </li>
             </ul>
          </nav>
-         <div className={styles.flexDiv}></div>
+         <div className={styles.flexDiv}>
+            <Buscador />
+         </div>
       </header>
    );
 };
