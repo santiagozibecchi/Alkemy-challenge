@@ -8,10 +8,10 @@ import Detalle from "./components/Detalle";
 
 // Styles
 import styles from "./css/App.module.css";
+import Resultados from "./components/Resultados";
 
 const App = () => {
-
-   useParams()
+   useParams();
 
    return (
       <div>
@@ -20,7 +20,8 @@ const App = () => {
             <Routes>
                <Route path="/" element={<Login />} />
                <Route path="/listado" element={<ListApp />} />
-               <Route path={`/detalle`} element={<Detalle />} />
+               <Route path="/detalle" element={<Detalle />} />
+               <Route path="/resultados" element={<Resultados />} />
             </Routes>
          </div>
          <Footer />
