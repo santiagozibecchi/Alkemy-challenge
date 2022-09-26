@@ -5,7 +5,7 @@ import { fetchApi } from "../helpers/fetchApi";
 import swal from "@sweetalert/with-react";
 import "../css/bootstrap.min.css";
 
-const ListApp = () => {
+const ListApp = ({ addOrRemoveFavs }) => {
    const [moviesList, setMoviesList] = useState([]);
 
    // Para hacer una redireccion es necesario utilizar useEffect
@@ -27,7 +27,6 @@ const ListApp = () => {
          });
    }, [setMoviesList]);
 
-
    // Queremos evitar el renderizado del componte y redirigir al usuario
    // ya que al utilizar la redireccion del navigate el usuario entra en la pagina
    // y despues se lo quita, queremos evitar esto
@@ -46,6 +45,13 @@ const ListApp = () => {
                         className="card-img-top"
                         alt="..."
                      />
+                     <button
+                        className="favourite-btn"
+                        onClick={addOrRemoveFavs}
+                        data-movie-id={movie.id}
+                     >
+                        🖤
+                     </button>
                      <div className="card-body">
                         <h5 className="card-title">{movie.title}</h5>
                         <p className="card-text text-dark">
