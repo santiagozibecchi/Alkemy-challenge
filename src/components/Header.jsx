@@ -14,8 +14,8 @@ const Header = () => {
                   </Link>
                </li>
                <li>
-                  <Link style={{ textDecoration: "none" }} to="/">
-                     Home
+                  <Link style={{ textDecoration: "none" }} to="/favoritos">
+                     Favoritos
                   </Link>
                </li>
                <li>

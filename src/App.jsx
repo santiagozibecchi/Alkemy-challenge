@@ -10,6 +10,7 @@ import Resultados from "./components/Resultados";
 // Styles
 import "./css/app.css";
 import styles from "./css/App.module.css";
+import Favoritos from "./components/Favoritos";
 
 const App = () => {
    const favMovies = localStorage.getItem("favs-A");
@@ -69,13 +70,14 @@ const App = () => {
                   path="/listado"
                   element={<ListApp addOrRemoveFavs={addOrRemoveFavs} />}
                />
-               <Route
-                  path="/detalle"
-                  element={<Detalle addOrRemoveFavs={addOrRemoveFavs} />}
-               />
+               <Route path="/detalle" element={<Detalle />} />
                <Route
                   path="/resultados"
                   element={<Resultados addOrRemoveFavs={addOrRemoveFavs} />}
+               />
+               <Route
+                  path="/favoritos"
+                  element={<Favoritos addOrRemoveFavs={addOrRemoveFavs} />}
                />
             </Routes>
          </div>
