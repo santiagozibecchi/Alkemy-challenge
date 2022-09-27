@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Buscador from "./Buscador";
 import styles from "../css/Header.module.css";
 
-const Header = () => {
+const Header = ({ favoritos }) => {
    return (
       <header className={styles.header}>
          <nav className={styles.navbar}>
@@ -14,14 +14,21 @@ const Header = () => {
                   </Link>
                </li>
                <li>
+                  <Link style={{ textDecoration: "none" }} to="/listado">
+                     Listado
+                  </Link>
+               </li>
+               <li>
                   <Link style={{ textDecoration: "none" }} to="/favoritos">
                      Favoritos
                   </Link>
                </li>
                <li>
-                  <Link style={{ textDecoration: "none" }} to="/listado">
-                     Listado
-                  </Link>
+                  {favoritos.length > 0 ? (
+                     <span>Peliculas en favoritos: {favoritos.length}</span>
+                  ) : (
+                     <span>No tiene peliculas en Fav.</span>
+                  )}
                </li>
             </ul>
          </nav>

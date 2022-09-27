@@ -13,16 +13,30 @@ import styles from "./css/App.module.css";
 import Favoritos from "./components/Favoritos";
 
 const App = () => {
-   const favMovies = localStorage.getItem("favs-A");
-   let tempMoviesInFavs;
+   // Para que sea el componente App quien se encargue de implementar la estructura del estado y que este lo comparta a favoritos y de esta manera cualquier cambio en el localStorage se actualize y renderice los nuevos favoritos
+   const [favoritos, setFavoritos] = useState([]);
 
-   if (favMovies === null) {
-      tempMoviesInFavs = [];
-   } else {
-      tempMoviesInFavs = JSON.parse(favMovies);
-   }
+   useEffect(() => {
+      const favsInLocal = localStorage.getItem("favs-A");
+
+      if (favsInLocal !== null) {
+         const favsArray = JSON.parse(favsInLocal);
+         setFavoritos(favsArray);
+      }
+   }, []);
+
+   // ------------------------
 
    const addOrRemoveFavs = (e) => {
+      const favMovies = localStorage.getItem("favs-A");
+      let tempMoviesInFavs;
+
+      if (favMovies === null) {
+         tempMoviesInFavs = [];
+      } else {
+         tempMoviesInFavs = JSON.parse(favMovies);
+      }
+
       // Capturo el evento que recibe la funcion del boton
       const btn = e.currentTarget;
       //  Del boton, me interesa saber el evento del elemento padre
@@ -45,9 +59,12 @@ const App = () => {
          (oneMovie) => oneMovie.id === movieData.id
       );
 
+      // * GUARDAMOS LA INFO EN EL LOCALSTORAGE
       if (!movieIsInArray) {
          tempMoviesInFavs.push(movieData);
          localStorage.setItem("favs-A", JSON.stringify(tempMoviesInFavs));
+         setFavoritos(tempMoviesInFavs);
+
          console.log("Se agrego pelicula");
       } else {
          // Si encuentra una pelicula cae aca
@@ -56,13 +73,15 @@ const App = () => {
          );
          // Devuelve todas las peliculas del array que sean oneMovie.id menos movieData.id
          localStorage.setItem("favs-A", JSON.stringify(moviesLeft));
+         setFavoritos(moviesLeft);
+
          console.log("Se elimino la pelicula");
       }
    };
 
    return (
       <div>
-         <Header />
+         <Header favoritos={favoritos} />
          <div className={styles.container}>
             <Routes>
                <Route path="/" element={<Login />} />
@@ -77,7 +96,12 @@ const App = () => {
                />
                <Route
                   path="/favoritos"
-                  element={<Favoritos addOrRemoveFavs={addOrRemoveFavs} />}
+                  element={
+                     <Favoritos
+                        addOrRemoveFavs={addOrRemoveFavs}
+                        favoritos={favoritos}
+                     />
+                  }
                />
             </Routes>
          </div>
